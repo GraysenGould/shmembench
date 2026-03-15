@@ -21,5 +21,23 @@
   @param opts Benchmark options given by the user 
  */
 void bench_shmem_and_reduce_bw(options * opts);
+void bench_shmem_or_reduce_bw(options * opts);
+void bench_shmem_xor_reduce_bw(options * opts);
+void bench_shmem_max_reduce_bw(options * opts);
+void bench_shmem_min_reduce_bw(options * opts);
+void bench_shmem_sum_reduce_bw(options * opts);
+void bench_shmem_prod_reduce_bw(options * opts);
+
+#define BENCH_SHMEM_REDUCE_OPERATIONS(X) \
+  X(and) \
+  X(or) \
+  X(xor) \
+  X(max) \
+  X(min) \
+  X(sum) \
+  X(prod) 
+
+
+
 
 #endif /* SHMEM_AND_REDUCE_H */
