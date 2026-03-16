@@ -20,13 +20,8 @@
   @brief Run the bandwidth benchmark for shmem_<operation>_reduce
   @param opts Benchmark options given by the user 
  */
-void bench_shmem_and_reduce_bw(options * opts);
-void bench_shmem_or_reduce_bw(options * opts);
-void bench_shmem_xor_reduce_bw(options * opts);
-void bench_shmem_max_reduce_bw(options * opts);
-void bench_shmem_min_reduce_bw(options * opts);
-void bench_shmem_sum_reduce_bw(options * opts);
-void bench_shmem_prod_reduce_bw(options * opts);
+#define BENCH_SHMEM_REDUCE_HEADER_DEFINITION(_op)  \
+  void bench_shmem_##_op##_reduce_bw(options * opts);
 
 #define BENCH_SHMEM_REDUCE_OPERATIONS(X) \
   X(and) \
@@ -37,7 +32,10 @@ void bench_shmem_prod_reduce_bw(options * opts);
   X(sum) \
   X(prod) 
 
+#define BENCH_SHMEM_REDUCE(_op) \
+  BENCH_SHMEM_REDUCE_HEADER_DEFINITION(_op)
 
-
+BENCH_SHMEM_REDUCE_OPERATIONS(BENCH_SHMEM_REDUCE)
+#undef BENCH_SHMEM_REDUCE
 
 #endif /* SHMEM_REDUCE_H */

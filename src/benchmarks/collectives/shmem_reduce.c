@@ -159,9 +159,9 @@ void bench_shmem_##_op##_reduce_bw(options * opts) {                            
 }
 #endif
 
-
 #define BENCH_SHMEM_REDUCE(_op) \
   BENCH_SHMEM_REDUCE_DEFINITION(_op)
 
 BENCH_SHMEM_REDUCE_OPERATIONS(BENCH_SHMEM_REDUCE)
 #undef BENCH_SHMEM_REDUCE
+
